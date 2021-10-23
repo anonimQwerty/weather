@@ -30,7 +30,7 @@ namespace weather.errorforms
             }
             catch
             {
-                textBox1.Text = "Токена нет!! Где токен, липковски? ГДЕ ТОКЕН";
+                textBox1.Text = "Токена нет!! Где токен, липковски? ГДЕ ТОКЕН?";
             }
 
             try
@@ -39,7 +39,7 @@ namespace weather.errorforms
             }
             catch
             {
-                textBox2.Text = "Города нет!! Где город, липковски? ГДЕ ТОКЕН";
+                textBox2.Text = "Города нет!! Где город, липковски? ГДЕ ГОРОД?";
             }
 
             try
@@ -51,7 +51,7 @@ namespace weather.errorforms
             }
             catch
             {
-                textBox3.Text = "Времени нет!! Где время, липковски? ГДЕ ТОКЕН";
+               
             }
 
         }
