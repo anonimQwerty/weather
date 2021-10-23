@@ -117,7 +117,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(181, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "минут (минимальное значение 10)";
+            this.label5.Text = "минут (минимальное значение 20)";
             // 
             // checkBox1
             // 
@@ -171,6 +171,7 @@
             this.Name = "notoken";
             this.Text = "notoken";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.notoken_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

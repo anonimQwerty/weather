@@ -22,7 +22,39 @@ namespace weather.errorforms
            
             
         }
+        private void notoken_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                textBox1.Text = key.GetValue("token").ToString();
+            }
+            catch
+            {
+                textBox1.Text = "Токена нет!! Где токен, липковски? ГДЕ ТОКЕН";
+            }
 
+            try
+            {
+                textBox2.Text = key.GetValue("city").ToString();
+            }
+            catch
+            {
+                textBox2.Text = "Города нет!! Где город, липковски? ГДЕ ТОКЕН";
+            }
+
+            try
+            {
+                int time = Convert.ToInt32(key.GetValue("time"));
+                time /=60000;
+                textBox3.Text = time.ToString();
+
+            }
+            catch
+            {
+                textBox3.Text = "Времени нет!! Где время, липковски? ГДЕ ТОКЕН";
+            }
+
+        }
         public void button1_Click(object sender, EventArgs e)
         {
             
@@ -31,15 +63,18 @@ namespace weather.errorforms
             string token = textBox1.Text;
             string city = textBox2.Text;
             string lang = comboBox1.Text;
+
+
+
             int time = Convert.ToInt32(textBox3.Text);
-            if (time<10)
+            if (time<20)
             {
-                time = 10;
+                time = 20;
             }
             
 
             time *= 60000;
-            label1.Text = lang;
+            //label1.Text = lang;
             
             key.SetValue("token", token);
             key.SetValue("city", city);
@@ -47,7 +82,7 @@ namespace weather.errorforms
 
             if (time==0)
             {
-                label2.Text = "Ты че пес?";
+                //label2.Text = "Ты че пес?";
             }
             else { 
                 key.SetValue("time", time);
@@ -55,5 +90,7 @@ namespace weather.errorforms
             
 
         }
+
+        
     }
 }
