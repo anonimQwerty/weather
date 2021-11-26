@@ -136,7 +136,7 @@
           "lib/net45/_._": {}
         },
         "build": {
-          "build/net461/System.Runtime.WindowsRuntime.targets": {}
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
         }
       },
       "System.Runtime.WindowsRuntime.UI.Xaml/4.6.0": {
@@ -302,7 +302,7 @@
           "lib/net45/_._": {}
         },
         "build": {
-          "build/net461/System.Runtime.WindowsRuntime.targets": {}
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
         }
       },
       "System.Runtime.WindowsRuntime.UI.Xaml/4.6.0": {
@@ -468,7 +468,7 @@
           "lib/net45/_._": {}
         },
         "build": {
-          "build/net461/System.Runtime.WindowsRuntime.targets": {}
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
         }
       },
       "System.Runtime.WindowsRuntime.UI.Xaml/4.6.0": {
@@ -634,7 +634,7 @@
           "lib/net45/_._": {}
         },
         "build": {
-          "build/net461/System.Runtime.WindowsRuntime.targets": {}
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
         }
       },
       "System.Runtime.WindowsRuntime.UI.Xaml/4.6.0": {

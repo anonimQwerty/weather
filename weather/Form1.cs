@@ -121,5 +121,69 @@ namespace weather
         {
             ShowWindow(this.Handle, 0);
         }
+
+        async void получитьДанныеСейчасToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowWindow(this.Handle, 0);
+            notifyIcon1.Visible = true;
+
+            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\my_weather_widget");
+            if (key.GetValue("token") == null)
+            {
+                notoken form = new notoken();
+                form.Show();
+            }
+
+            else
+            {
+                string token = key.GetValue("token").ToString();
+                string city = key.GetValue("city").ToString();
+                string lang = key.GetValue("lang").ToString();
+                int time = (int)key.GetValue("time");
+
+
+
+
+
+                while (true)
+                {
+                    try
+                    {
+
+                        string forecaststring = new WebClient().DownloadString($"http://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang}&appid={token}");
+                        byte[] bytes = Encoding.Default.GetBytes(forecaststring);
+                        forecaststring = Encoding.UTF8.GetString(bytes);
+                        JSONNode forecast = JSON.Parse(forecaststring);
+
+                        var sky = forecast["weather"][0]["description"];
+
+
+
+
+
+                        ToastContentBuilder toastContentBuilder = new ToastContentBuilder();
+                        toastContentBuilder.AddText($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round(forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round(forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
+                        toastContentBuilder.Show();
+                        await Task.Delay(time);
+
+                    }
+                    catch
+                    {
+                        ToastContentBuilder toastContentBuilder = new ToastContentBuilder();
+                        toastContentBuilder.AddText($"Произошёл какой-то пиздец. Скорее всего неверный токен. Открываю окно настроек...");
+                        toastContentBuilder.Show();
+
+                        Form form = new notoken();
+                        form.Show();
+                        await Task.Delay(60000000);
+                        //throw;
+
+                    }
+
+                }
+
+            }
+
+        }
     }
 }

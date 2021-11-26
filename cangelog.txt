@@ -1,0 +1,5 @@
+===0.0.3===
+
+Added: now you can get weather info when you need
+Added: version file
+Added: changelog file
