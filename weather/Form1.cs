@@ -8,6 +8,8 @@ using weather.errorforms;
 using System.Net;
 using System.Text.Json;
 using System.Runtime.InteropServices;
+using weather.classes;
+using weather.functions;
 
 namespace weather
 {
@@ -33,62 +35,30 @@ namespace weather
             ShowWindow(this.Handle, 0);
             notifyIcon1.Visible = true;
 
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\my_weather_widget");
-            if (key.GetValue("token")==null)
-            {
-                notoken form = new notoken();
-                form.Show();
-            }
-
-            else {
-                string token = key.GetValue("token").ToString();
-                string city=key.GetValue("city").ToString();
-                string lang = key.GetValue("lang").ToString();
-                int time=(int)key.GetValue("time");
-
-
-
-
 
                while (true)
                 {
                     try
                     {
 
-                    string forecaststring = new WebClient().DownloadString($"http://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang}&appid={token}");
-                    byte[] bytes = Encoding.Default.GetBytes(forecaststring);
-                    forecaststring = Encoding.UTF8.GetString(bytes);
-                    JSONNode forecast = JSON.Parse(forecaststring);
+                    weatherclass wether = new weatherclass();
 
-                    var sky = forecast["weather"][0]["description"];
-                   
-                    
+                    var forecast = wether.getUpd();
+
+                    functions.functions.sendMessage($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round(forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round(forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
+                    await Task.Delay(wether.time);
 
 
 
-                    ToastContentBuilder toastContentBuilder = new ToastContentBuilder();
-                    toastContentBuilder.AddText($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round( forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round( forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
-                    toastContentBuilder.Show();
-                    await Task.Delay(time);
-
-                    }
+                }
                     catch
                     {
-                        ToastContentBuilder toastContentBuilder = new ToastContentBuilder();
-                        toastContentBuilder.AddText($"Произошёл какой-то пиздец. Скорее всего неверный токен. Открываю окно настроек...");
-                        toastContentBuilder.Show();
-
-                        Form form = new notoken();
-                        form.Show();
-                        await Task.Delay(60000000);
-                        //throw;
 
                     }
                     
                 }
 
             }
-        }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
@@ -127,63 +97,35 @@ namespace weather
             ShowWindow(this.Handle, 0);
             notifyIcon1.Visible = true;
 
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\my_weather_widget");
-            if (key.GetValue("token") == null)
+            
+
+
+            try
             {
-                notoken form = new notoken();
-                form.Show();
+                weatherclass wether = new weatherclass();
+
+                
+                var forecast = wether.getUpd();
+
+
+                functions.functions.sendMessage($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round(forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round(forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
+                await Task.Delay(wether.time);
+
             }
-
-            else
-            {
-                string token = key.GetValue("token").ToString();
-                string city = key.GetValue("city").ToString();
-                string lang = key.GetValue("lang").ToString();
-                int time = (int)key.GetValue("time");
-
-
-
-
-
-                while (true)
-                {
-                    try
-                    {
-
-                        string forecaststring = new WebClient().DownloadString($"http://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang}&appid={token}");
-                        byte[] bytes = Encoding.Default.GetBytes(forecaststring);
-                        forecaststring = Encoding.UTF8.GetString(bytes);
-                        JSONNode forecast = JSON.Parse(forecaststring);
-
-                        var sky = forecast["weather"][0]["description"];
-
-
-
-
-
-                        ToastContentBuilder toastContentBuilder = new ToastContentBuilder();
-                        toastContentBuilder.AddText($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round(forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round(forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
-                        toastContentBuilder.Show();
-                        await Task.Delay(time);
-
-                    }
-                    catch
-                    {
-                        ToastContentBuilder toastContentBuilder = new ToastContentBuilder();
-                        toastContentBuilder.AddText($"Произошёл какой-то пиздец. Скорее всего неверный токен. Открываю окно настроек...");
-                        toastContentBuilder.Show();
-
-                        Form form = new notoken();
-                        form.Show();
-                        await Task.Delay(60000000);
-                        //throw;
-
-                    }
-
-                }
+            catch
+            {          
 
             }
 
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            weatherclass wether = new weatherclass();
+            var tmpvar = wether.getUpd();
+            functions.functions.sendMessage($"{tmpvar["weather"][0]["description"]}");
+            
         }
     }
 }

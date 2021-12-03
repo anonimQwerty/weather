@@ -24,35 +24,54 @@ namespace weather.errorforms
         }
         private void notoken_Load(object sender, EventArgs e)
         {
-            try
-            {
-                textBox1.Text = key.GetValue("token").ToString();
-            }
-            catch
+            
+
+            if (key.GetValue("token")==null)
             {
                 textBox1.Text = "Токена нет!! Где токен, липковски? ГДЕ ТОКЕН?";
             }
+            else
+            {
+                textBox1.Text = key.GetValue("token").ToString();
+            }
 
-            try
+           
+
+            if (key.GetValue("city") == null)
+            {
+                textBox2.Text = "Города нет!! Где токен, липковски? ГДЕ ТОКЕН?";
+            }
+            else
             {
                 textBox2.Text = key.GetValue("city").ToString();
             }
-            catch
-            {
-                textBox2.Text = "Города нет!! Где город, липковски? ГДЕ ГОРОД?";
-            }
 
-            try
+
+
+            //try
+            //{
+            //    int time = Convert.ToInt32(key.GetValue("time"));
+            //    time /=60000;
+            //    textBox3.Text = time.ToString();
+
+            //}
+            //catch
+            //{
+
+            //}
+
+            if (key.GetValue("time") == null)
+            {
+                textBox3.Text = "time isn't set";
+
+            }
+            else
             {
                 int time = Convert.ToInt32(key.GetValue("time"));
-                time /=60000;
+                time /= 60000;
                 textBox3.Text = time.ToString();
+            }
 
-            }
-            catch
-            {
-               
-            }
 
         }
         public void button1_Click(object sender, EventArgs e)
