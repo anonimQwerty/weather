@@ -17,3 +17,8 @@ weather/obj/Release/*
 weather/obj/Debug/*
 *.exe
 weather/obj/Release/weather.Properties.Resources.resources
+weather/obj/*
+weather/obj/project.nuget.cache
+weather/obj/*/*
+weather/obj/weather.csproj.nuget.dgspec.json
+weather/obj/project.nuget.cache
