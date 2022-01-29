@@ -30,35 +30,40 @@ namespace weather
 
         async void Form1_Load(object sender, EventArgs e)
         {
-          
+
 
             ShowWindow(this.Handle, 0);
             notifyIcon1.Visible = true;
 
-                    weatherclass wether = new weatherclass();
+            weatherclass wether = new weatherclass();
+            if (!wether.problems)
+            {
 
-               while (true)
+
+
+                while (true)
                 {
                     try
                     {
 
 
-                    var forecast = wether.getUpd();
+                        var forecast = wether.getUpd();
 
-                    functions.functions.sendMessage($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round(forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round(forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
-                    await Task.Delay(wether.time);
+                        functions.functions.sendMessage($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round(forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round(forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
+                        await Task.Delay(wether.time);
 
 
 
-                }
+                    }
                     catch
                     {
 
                     }
-                    
+
                 }
 
             }
+        }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
