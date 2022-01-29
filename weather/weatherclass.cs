@@ -22,7 +22,7 @@ namespace weather.classes
 
 
             RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\my_weather_widget");
-            if (key.GetValue("token") == null || key.GetValue("token") == "")
+            if (key.GetValue("token") == null || key.GetValue("token") == "" || key.GetValue("city") == null || key.GetValue("city") == "")
             {
                 functions.functions.sendErrMessage();
                 notoken form = new notoken();
