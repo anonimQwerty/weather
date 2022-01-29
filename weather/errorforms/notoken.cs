@@ -1,12 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace weather.errorforms
@@ -18,14 +11,10 @@ namespace weather.errorforms
         public notoken()
         {
             InitializeComponent();
-            comboBox1.SelectedItem = "ua";
-           
-            
+            comboBox1.SelectedItem = "ua";   
         }
         private void notoken_Load(object sender, EventArgs e)
         {
-            
-
             if (key.GetValue("token")==null)
             {
                 textBox1.Text = "Токена нет!! Где токен, липковски? ГДЕ ТОКЕН?";
@@ -35,8 +24,6 @@ namespace weather.errorforms
                 textBox1.Text = key.GetValue("token").ToString();
             }
 
-           
-
             if (key.GetValue("city") == null)
             {
                 textBox2.Text = "Города нет!! Где токен, липковски? ГДЕ ТОКЕН?";
@@ -45,20 +32,6 @@ namespace weather.errorforms
             {
                 textBox2.Text = key.GetValue("city").ToString();
             }
-
-
-
-            //try
-            //{
-            //    int time = Convert.ToInt32(key.GetValue("time"));
-            //    time /=60000;
-            //    textBox3.Text = time.ToString();
-
-            //}
-            //catch
-            //{
-
-            //}
 
             if (key.GetValue("time") == null)
             {
@@ -71,29 +44,21 @@ namespace weather.errorforms
                 time /= 60000;
                 textBox3.Text = time.ToString();
             }
-
-
         }
+
         public void button1_Click(object sender, EventArgs e)
         {
-            
-
-            
+ 
             string token = textBox1.Text;
             string city = textBox2.Text;
             string lang = comboBox1.Text;
-
-
 
             int time = Convert.ToInt32(textBox3.Text);
             if (time<20)
             {
                 time = 20;
             }
-            
-
             time *= 60000;
-            //label1.Text = lang;
             
             key.SetValue("token", token);
             key.SetValue("city", city);
@@ -108,10 +73,6 @@ namespace weather.errorforms
             }
 
             Application.Restart();
-            
-
         }
-
-        
     }
 }

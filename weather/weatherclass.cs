@@ -8,21 +8,21 @@ using weather.functions;
 
 namespace weather.classes
 {
-    public class weatherclass
+    public class weatherСlass
     {
         public string token;
         public string city;
         public string lang;
         public int time;
-        public bool problems=false;
-        public weatherclass()
+        public bool problems = false;
+        public weatherСlass()
         {
-            
+
 
 
 
             RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\my_weather_widget");
-            if (key.GetValue("token") == null && !problems)
+            if (key.GetValue("token") == null || key.GetValue("token") == "")
             {
                 functions.functions.sendErrMessage();
                 notoken form = new notoken();

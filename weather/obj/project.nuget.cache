@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wBKCBka1g2whDsvcRcwnHonxGr3pxjyQuLcg69SKZ4nrT6dS/ZxWs6XbD004yJZmqNgqYPM3aSKh5c0ZXYGt0w==",
+  "dgSpecHash": "NnafDoZRORRHhIu3H8FFradBj6/rn2ymURl8Ehnx5wj6N1gxj/pq+fxxxIZMLRZ1hCDYlhVOwg7lOC9+BtUnCA==",
   "success": true,
-  "projectFilePath": "E:\\vs_projects\\weather\\weather\\weather.csproj",
+  "projectFilePath": "D:\\VSprojects\\weather\\weather\\weather.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.0\\microsoft.netframework.referenceassemblies.net472.1.0.0.nupkg.sha512",

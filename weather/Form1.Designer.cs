@@ -33,8 +33,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.получитьДанныеСейчасToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SetUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,14 +58,21 @@
             this.SetUp,
             this.closeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 70);
             // 
             // получитьДанныеСейчасToolStripMenuItem
             // 
             this.получитьДанныеСейчасToolStripMenuItem.Name = "получитьДанныеСейчасToolStripMenuItem";
             this.получитьДанныеСейчасToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.получитьДанныеСейчасToolStripMenuItem.Text = "Получить данные сейчас";
-            this.получитьДанныеСейчасToolStripMenuItem.Click += new System.EventHandler(this.получитьДанныеСейчасToolStripMenuItem_Click);
+            this.получитьДанныеСейчасToolStripMenuItem.Click += new System.EventHandler(this.getDataNowToolStripMenuItem_Click);
+            // 
+            // SetUp
+            // 
+            this.SetUp.Name = "SetUp";
+            this.SetUp.Size = new System.Drawing.Size(213, 22);
+            this.SetUp.Text = "Настроить";
+            this.SetUp.Click += new System.EventHandler(this.setUpToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
@@ -73,13 +80,6 @@
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.closeToolStripMenuItem.Text = "Закрыть";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // SetUp
-            // 
-            this.SetUp.Name = "SetUp";
-            this.SetUp.Size = new System.Drawing.Size(213, 22);
-            this.SetUp.Text = "Настроить";
-            this.SetUp.Click += new System.EventHandler(this.настроитьToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -133,7 +133,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

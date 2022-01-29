@@ -35,7 +35,7 @@ namespace weather
             ShowWindow(this.Handle, 0);
             notifyIcon1.Visible = true;
 
-            weatherclass wether = new weatherclass();
+            weatherСlass wether = new weatherСlass();
             if (!wether.problems)
             {
 
@@ -45,15 +45,10 @@ namespace weather
                 {
                     try
                     {
-
-
                         var forecast = wether.getUpd();
 
                         functions.functions.sendMessage($"{forecast["weather"][0]["description"]}\n Температура: {Math.Round(forecast["main"]["temp"] - 273.15, 3)} \n Ощущается как: {Math.Round(forecast["main"]["feels_like"] - 273.15, 3)} \nДавление: {forecast["main"]["pressure"]}\nСкорость ветра {forecast["wind"]["speed"]}");
                         await Task.Delay(wether.time);
-
-
-
                     }
                     catch
                     {
@@ -63,12 +58,6 @@ namespace weather
                 }
 
             }
-        }
-
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            
-
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -86,7 +75,7 @@ namespace weather
             Application.Exit();
         }
 
-        private void настроитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void setUpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             notoken form = new notoken();
             form.Show();
@@ -97,19 +86,28 @@ namespace weather
             ShowWindow(this.Handle, 0);
         }
 
-        async void получитьДанныеСейчасToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            weatherСlass wether = new weatherСlass();
+            var tmpvar = wether.getUpd();
+            functions.functions.sendMessage($"{tmpvar["weather"][0]["description"]}");
+            
+        }
+
+        async void getDataNowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowWindow(this.Handle, 0);
             notifyIcon1.Visible = true;
 
-            
+
 
 
             try
             {
-                weatherclass wether = new weatherclass();
+                weatherСlass wether = new weatherСlass();
 
-                
+
                 var forecast = wether.getUpd();
 
 
@@ -118,19 +116,9 @@ namespace weather
 
             }
             catch
-            {          
+            {
 
             }
-
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            weatherclass wether = new weatherclass();
-            var tmpvar = wether.getUpd();
-            functions.functions.sendMessage($"{tmpvar["weather"][0]["description"]}");
-            
         }
     }
 }

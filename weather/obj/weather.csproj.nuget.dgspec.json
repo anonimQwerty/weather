@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\vs_projects\\weather\\weather\\weather.csproj": {}
+    "D:\\VSprojects\\weather\\weather\\weather.csproj": {}
   },
   "projects": {
-    "E:\\vs_projects\\weather\\weather\\weather.csproj": {
+    "D:\\VSprojects\\weather\\weather\\weather.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\vs_projects\\weather\\weather\\weather.csproj",
+        "projectUniqueName": "D:\\VSprojects\\weather\\weather\\weather.csproj",
         "projectName": "weather",
-        "projectPath": "E:\\vs_projects\\weather\\weather\\weather.csproj",
+        "projectPath": "D:\\VSprojects\\weather\\weather\\weather.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "E:\\vs_projects\\weather\\weather\\obj\\",
+        "outputPath": "D:\\VSprojects\\weather\\weather\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
