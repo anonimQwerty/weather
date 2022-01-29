@@ -35,13 +35,13 @@ namespace weather
             ShowWindow(this.Handle, 0);
             notifyIcon1.Visible = true;
 
+                    weatherclass wether = new weatherclass();
 
                while (true)
                 {
                     try
                     {
 
-                    weatherclass wether = new weatherclass();
 
                     var forecast = wether.getUpd();
 

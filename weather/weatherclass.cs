@@ -14,6 +14,7 @@ namespace weather.classes
         public string city;
         public string lang;
         public int time;
+        public bool showed=false;
         public weatherclass()
         {
             
@@ -21,12 +22,14 @@ namespace weather.classes
 
 
             RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\my_weather_widget");
-            if (key.GetValue("token") == null)
+            if (key.GetValue("token") == null && !showed)
             {
                 functions.functions.sendErrMessage();
                 notoken form = new notoken();
                 form.Show();
-                
+                //showed = true;
+
+
             }
 
             else
@@ -35,6 +38,7 @@ namespace weather.classes
                 city = key.GetValue("city").ToString();
                 lang = key.GetValue("lang").ToString();
                 time = (int)key.GetValue("time");
+                
             }
         }
 

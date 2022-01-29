@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 634);
+            this.ClientSize = new System.Drawing.Size(630, 634);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.checkBox1);
@@ -170,7 +170,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "notoken";
             this.Text = "notoken";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.notoken_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

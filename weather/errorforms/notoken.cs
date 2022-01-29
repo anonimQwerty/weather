@@ -106,6 +106,8 @@ namespace weather.errorforms
             else { 
                 key.SetValue("time", time);
             }
+
+            Application.Restart();
             
 
         }
