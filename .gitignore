@@ -22,3 +22,7 @@ weather/obj/project.nuget.cache
 weather/obj/*/*
 weather/obj/weather.csproj.nuget.dgspec.json
 weather/obj/project.nuget.cache
+weather/obj/weather.csproj.nuget.g.props
+weather/obj/project.assets.json
+weather/obj/project.nuget.cache
+weather/obj/weather.csproj.nuget.dgspec.json
